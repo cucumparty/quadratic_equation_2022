@@ -6,10 +6,6 @@ void announce(double * a, double * b, double * c)
     assert(b != NULL);
     assert(c != NULL);
 
-    assert(isfinite(a) != 0);
-    assert(isfinite(b) != 0);
-    assert(isfinite(c) != 0);   
-
     printf("Enter number coefficents a, b and c (or 0 for every coefficent for exit).\n");
     printf("Enter number coefficent a:\n");
     *a = get_double();
@@ -40,10 +36,6 @@ void solve(double * x, double * y, double * z)
     assert(y != NULL);
     assert(z != NULL);
 
-    assert(isfinite(a) != 0);
-    assert(isfinite(b) != 0);
-    assert(isfinite(c) != 0);
-
     double x_1 = NAN;
     double x_2 = NAN;
     double d = NAN;
@@ -53,6 +45,10 @@ void solve(double * x, double * y, double * z)
     a = * x;
     b = * y;
     c = * z;
+
+    assert(isfinite(a) != 0);
+    assert(isfinite(b) != 0);
+    assert(isfinite(c) != 0);
 
     while (a != 0 || b != 0 || c != 0)
     {
