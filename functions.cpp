@@ -6,14 +6,9 @@ void announce(double * a, double * b, double * c)
     assert(b != NULL);
     assert(c != NULL);
 
-    assert(a != INFINITY);
-    assert(b != INFINITY);
-    assert(c != INFINITY);
-
-    assert(a != NAN);
-    assert(b != NAN);
-    assert(c != NAN);
-
+    assert(isfinite(a) != 0);
+    assert(isfinite(b) != 0);
+    assert(isfinite(c) != 0);   
 
     printf("Enter number coefficents a, b and c (or 0 for every coefficent for exit).\n");
     printf("Enter number coefficent a:\n");
@@ -45,13 +40,9 @@ void solve(double * x, double * y, double * z)
     assert(y != NULL);
     assert(z != NULL);
 
-    assert(a != INFINITY);
-    assert(b != INFINITY);
-    assert(c != INFINITY);
-
-    assert(a != NAN);
-    assert(b != NAN);
-    assert(c != NAN);
+    assert(isfinite(a) != 0);
+    assert(isfinite(b) != 0);
+    assert(isfinite(c) != 0);
 
     double x_1 = NAN;
     double x_2 = NAN;
