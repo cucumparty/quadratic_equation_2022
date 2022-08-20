@@ -30,6 +30,36 @@ double  get_double(void)
     return input;
 }
 
+int compare(double  x, double  y, const double  epsylon)
+{
+    if(fabs(x - y) < epsylon)
+        return 1;
+    else
+        return 0;
+}
+
+void linear(double * b, double * c)
+{
+    assert(b != NULL);
+    assert(c != NULL);
+
+    assert(isfinite(*b));
+    assert(isfinite(*c));
+
+    double x_1 = NAN;
+
+    if(compare(*b, 0, epsylon) != 1 && compare(*c, 0, epsylon) != 1)
+    {
+        x_1 = -(*c) / (*b);
+        printf("The solution is 1 root: %lf\n", x_1);
+    }
+    if(compare(*b, 0, epsylon) == 1 && compare(*c, 0, epsylon) != 1)
+    {
+        printf("The equation can't be solved.\n");
+    }
+}
+
+
 void solve(double * x, double * y, double * z)
 {
     assert(x != NULL);
@@ -39,73 +69,64 @@ void solve(double * x, double * y, double * z)
     double x_1 = NAN;
     double x_2 = NAN;
     double d = NAN;
-    double epsylone = 0.000001;
     double a, b, c; 
 
     a = * x;
     b = * y;
     c = * z;
 
-    assert(isfinite(a) != 0);
-    assert(isfinite(b) != 0);
-    assert(isfinite(c) != 0);
+    assert(isfinite(a));
+    assert(isfinite(b));
+    assert(isfinite(c));
 
-    while (a != 0 || b != 0 || c != 0)
+    while (compare(a, 0, epsylon) != 1 || compare(b, 0, epsylon) != 1 || compare(c, 0, epsylon) != 1)
     {
-        if( a != 0 && b != 0 && c != 0)
+        if( compare(a, 0, epsylon) != 1)
         {
-            d = b * b - 4 * a * c; 
-            double epsylon = 0.000001;                 //дискриминант
+            if(compare(b, 0, epsylon) != 1 && compare(c, 0, epsylon) != 1)
+            {
+                d = b * b - 4 * a * c;               //дискриминант
         
-            if (d < 0)
-            {
-                printf("The equation can't be solved.\n");
+                if (d < 0)
+                {  
+                    printf("The equation can't be solved.\n");
+                }
+                if (compare(d, 0, epsylon) == 1)
+                {
+                    x_1 = -b / (2 * a);
+                    printf("The solutions of equation are 2 repeating roots: %lf, %lf\n", x_1, x_1);
+                }
+                if (d > 0)
+                {
+                    x_1 = (-b + sqrt(d)) / (2 * a);
+                    x_2 = (-b - sqrt(d)) / (2 * a);
+                    printf("The solutions of equation are 2 roots: %lf, %lf\n", x_1, x_2);
+                }
             }
-            if (d < (d + epsylon) && d > (d - epsylon))
+            if(compare(b, 0, epsylon) == 1 && compare(c, 0, epsylon) != 1)
             {
-                x_1 = -b / (2 * a);
-                printf("The solutions of equation are 2 repeating roots: %lf, %lf\n", x_1, x_1);
+                if(a * c > 0)
+                    printf("The equation can't be solved.\n");
+                else
+                {
+                    x_1 = sqrt(-c / a);
+                    x_2 = -sqrt(-c / a);
+                    printf("The solutions of equation are 2 roots: %lf, %lf\n", x_1, x_2);
+                }
             }
-            if (d > 0)
+            if(compare(b, 0, epsylon) != 1 && compare(c, 0, epsylon) == 1)
             {
-                x_1 = (-b + sqrt(d)) / (2 * a);
-                x_2 = (-b - sqrt(d)) / (2 * a);
+                x_1 = 0.000000;
+                x_2 = -b / a;
                 printf("The solutions of equation are 2 roots: %lf, %lf\n", x_1, x_2);
             }
         }
-
-
-        if(a == 0 && b == 0 && c != 0)
-            printf("The equation can't be solved.\n");
-
-        if(a == 0 && b != 0)
-        {
-            x_1 = -c / b;
-            printf("The solution is 1 root: %lf\n", x_1);
-        }
-
-        if(b == 0 && a != 0 && c != 0)
-        {
-            if(a * c > 0)
-                printf("The equation can't be solved.\n");
-            else
-            {
-                x_1 = sqrt(-c / a);
-                x_2 = -sqrt(-c / a);
-                printf("The solutions of equation are 2 roots: %lf, %lf\n", x_1, x_2);
-            }
-        }
-    
-        if(c == 0 && a != 0)
-        {
-            x_1 = -b / a;
-            printf("The solutions of equation are 2 roots: 0.0000000, %lf\n", x_1);
-        }
+        else
+            linear(&b, &c);
 
         announce(&a, &b, &c);
-        printf("The infinite number of solutions.\n");
     }
+    
+    printf("The infinite number of solutions.\n");
 
 }
-
-
