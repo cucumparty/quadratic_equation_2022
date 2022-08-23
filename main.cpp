@@ -10,8 +10,11 @@ int main(int argc, char* argv[])
     double x_2 = NAN;
     int root_quantity = 0;
 
-    if(strcmp(argv[1], "-h") == 0)
-        printf("The file name is %s\n", argv[0]);
+    if(argc > 1)
+    {
+        if(strcmp(argv[1], "-h") == 0)
+            printf("The file name is %s\n", argv[0]);
+    }
 
     #ifndef DEBUG_MOD
    
