@@ -7,11 +7,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+//------------------------------------------------------
 //! Use DEBUG_MOD to run unit tests to check the program
 //!
 //! @note Comment DEBUG_MOD if you want to use the program as usual
+//------------------------------------------------------
 
-//#define DEBUG_MOD
+#define DEBUG_MOD
 
 //! Constant for comparing
 
