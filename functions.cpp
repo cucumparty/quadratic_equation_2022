@@ -70,7 +70,7 @@ int solve(double a, double b, double c, double* x_1, double* x_2)
     assert(x_2 != NULL);
     assert(x_1 != x_2);
 
-    double d = NAN;
+    double discriminant = NAN;
 
     assert(isfinite(a));
     assert(isfinite(b));
@@ -80,17 +80,17 @@ int solve(double a, double b, double c, double* x_1, double* x_2)
     {
         if(compare(b, 0, epsylon) == FALSE && compare(c, 0, epsylon) == FALSE)
         {
-            d = b * b - 4 * a * c;               
+            discriminant = b * b - 4 * a * c;               
         
-            if (d < 0)
+            if (discriminant < 0)
                 return 0;
-            if (compare(d, 0, epsylon) == TRUE)
+            if (compare(discriminant, 0, epsylon) == TRUE)
             {
                 *x_1 = -b / (2 * a);
                 *x_2 = *x_1;
                 return 2;
             }
-            if (d > 0)
+            if (discriminant > 0)
             {
                 *x_1 = (-b + sqrt(d)) / (2 * a);
                 *x_2 = (-b - sqrt(d)) / (2 * a);
