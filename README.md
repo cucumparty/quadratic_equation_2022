@@ -11,3 +11,5 @@ If you want test the program automatically you can uncomment `#define DEBUG_MOD`
 |-----------------|:-------------:|---------------|---------------|----------|----------|
 | coefficient a   | coefficient b | coefficient c | root quantity | 1st root | 2nd root |
 | coefficient a   | coefficient b | coefficient c | root quantity | 1st root | 2nd root |
+
+![](https://github.com/cucumparty/quadratic_equation_2022/blob/master/kotik.jpeg)
