@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
     double c = NAN;
     double x_1 = NAN;
     double x_2 = NAN;
-    int root_number = 0;
+    int root_quantity = 0;
 
     if(strcmp(argv[1], "-h") == 0)
         printf("The file name is %s\n", argv[0]);
@@ -21,8 +21,8 @@ int main(int argc, char* argv[])
 
     while (compare(a, 0, epsylon) != 1 || compare(b, 0, epsylon) != 1 || compare(c, 0, epsylon) != 1)
     {
-        root_number = solve(a, b, c, &x_1, &x_2);
-        print_roots(root_number, x_1, x_2);
+        root_quantity = solve(a, b, c, &x_1, &x_2);
+        print_roots(root_quantity, x_1, x_2);
         announce(&a, &b, &c);
     }
     
@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
             return EXIT_FAILURE;
         }
 
-        debug_solution(fp, a, b, c, root_number, x_1, x_2);
+        debug_solution(fp, a, b, c, root_quantity, x_1, x_2);
         
         if(fclose(fp) != 0)
             fprintf(stderr, "Error by closing the file.\n ");

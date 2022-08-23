@@ -101,7 +101,7 @@ int linear(double b, double c, double* x_1);
 //! @param [in] Pointer to the second root from file
 //----------------------------------------------------------------------------------------
 
-void debug_scan(FILE* fp, double* a, double* b, double* c, int* test_root_number, double* test_x_1, double* test_x_2);
+void debug_scan(FILE* fp, double* a, double* b, double* c, int* test_root_quantity, double* test_x_1, double* test_x_2);
 
 //----------------------------------------------------------------------------------
 //! Solve the square equation ax^2 + bx + c = 0 with the coefficients from file and check the resulting roots with our function <int solve> with test roots
@@ -117,7 +117,7 @@ void debug_scan(FILE* fp, double* a, double* b, double* c, int* test_root_number
 //! @note The function compares quantity of roots and roots from file with the results of our program
 //-----------------------------------------------------------------------------------
 
-void debug_solution(FILE* fp, double a, double b, double c, int root_number, double x_1, double x_2);
+void debug_solution(FILE* fp, double a, double b, double c, int root_quantity, double x_1, double x_2);
 
 //----------------------------------------------
 //! Switch for printing the roots
