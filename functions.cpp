@@ -154,8 +154,8 @@ void DebugSolveSquare(FILE* fp, double a, double b, double c, int root_quantity,
         PrintRoots(root_quantity, x_1, x_2);
 
         if(CompareNumbers(root_quantity, test_root_quantity, epsylon) == TRUE && 
-           CompareNumbers(test_x_1, x_1, epsylon) == TRUE && 
-           CompareNumbers(test_x_2, x_2, epsylon) == TRUE )
+           (CompareNumbers(test_x_1, x_1, epsylon) == TRUE || CompareNumbers(test_x_1, x_2, epsylon) == TRUE) && 
+           (CompareNumbers(test_x_2, x_2, epsylon) == TRUE || CompareNumbers(test_x_2, x_1, epsylon) == TRUE))
             printf("Test  %d completed\n", i);
         else
             printf("Test  %d  was not completed\n", i); 
