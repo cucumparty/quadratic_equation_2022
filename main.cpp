@@ -20,13 +20,13 @@ int main(int argc, char* argv[])
    
     printf("This is a program to solve a quadratic equation!\n");
 
-    announce(&a, &b, &c);
+    AnnounceCoeff(&a, &b, &c);
 
-    while (compare(a, 0, epsylon) != 1 || compare(b, 0, epsylon) != 1 || compare(c, 0, epsylon) != 1)
+    while (CompareNumbers(a, 0, epsylon) != 1 || CompareNumbers(b, 0, epsylon) != 1 || CompareNumbers(c, 0, epsylon) != 1)
     {
-        root_quantity = solve(a, b, c, &x_1, &x_2);
-        print_roots(root_quantity, x_1, x_2);
-        announce(&a, &b, &c);
+        root_quantity = SolveSquare(a, b, c, &x_1, &x_2);
+        PrintRoots(root_quantity, x_1, x_2);
+        AnnounceCoeff(&a, &b, &c);
     }
     
     printf("The infinite number of solutions.\n");
@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
             return EXIT_FAILURE;
         }
 
-        debug_solution(fp, a, b, c, root_quantity, x_1, x_2);
+        DebugSolveSquare(fp, a, b, c, root_quantity, x_1, x_2);
         
         if(fclose(fp) != 0)
             fprintf(stderr, "Error by closing the file.\n ");

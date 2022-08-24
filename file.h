@@ -13,7 +13,7 @@
 //! @note Comment DEBUG_MOD if you want to use the program as usual
 //------------------------------------------------------
 
-#define DEBUG_MOD
+//#define DEBUG_MOD
 
 //! Constant for comparing
 
@@ -43,7 +43,7 @@ enum roots{
 //! @param [in] Pointer to the c-coefficient
 //----------------------------------------------------------------
 
-void announce(double* a, double* b, double* c);
+void AnnounceCoeff(double* a, double* b, double* c);
 
 //-------------------------------------------
 //! Check if the entered symbol the number is
@@ -51,7 +51,7 @@ void announce(double* a, double* b, double* c);
 //! @return Non-numeric symbols
 //-------------------------------------------
 
-double get_double(void);
+double GetDouble(void);
 
 //-----------------------------------------------
 //! Compare 2 double numbers with help of epsylon
@@ -63,7 +63,7 @@ double get_double(void);
 //! @return 1 if two double numbers are equal(0 if not)
 //------------------------------------------------
 
-int compare(double  x, double  y, const double  epsylon);
+int CompareNumbers(double  x, double  y, const double  epsylon);
 
 //--------------------------------------------------------
 //! Solve the square equation ax^2 + bx + c = 0
@@ -79,7 +79,7 @@ int compare(double  x, double  y, const double  epsylon);
 //! @note If all the coefficients zeroes the program exits.
 //--------------------------------------------------------
 
-int solve(double a, double b, double c, double* x_1, double* x_2);
+int SolveSquare(double a, double b, double c, double* x_1, double* x_2);
 
 //--------------------------------
 //! Solve the equation bx + c = 0
@@ -91,7 +91,7 @@ int solve(double a, double b, double c, double* x_1, double* x_2);
 //! @return Number of roots
 //--------------------------------
 
-int linear(double b, double c, double* x_1);
+int SolveLinear(double b, double c, double* x_1);
 
 //---------------------------------------------------------------------------------------
 //! Announce coefficients, number of roots and roots for debug from file "unit_tests.txt"
@@ -105,7 +105,7 @@ int linear(double b, double c, double* x_1);
 //! @param [in] Pointer to the second root from file
 //----------------------------------------------------------------------------------------
 
-void debug_scan(FILE* fp, double* a, double* b, double* c, int* test_root_quantity, double* test_x_1, double* test_x_2);
+void DebugScan(FILE* fp, double* a, double* b, double* c, int* test_root_quantity, double* test_x_1, double* test_x_2);
 
 //----------------------------------------------------------------------------------
 //! Solve the square equation ax^2 + bx + c = 0 with the coefficients from file and check the resulting roots with our function <int solve> with test roots
@@ -121,7 +121,7 @@ void debug_scan(FILE* fp, double* a, double* b, double* c, int* test_root_quanti
 //! @note The function compares quantity of roots and roots from file with the results of our program
 //-----------------------------------------------------------------------------------
 
-void debug_solution(FILE* fp, double a, double b, double c, int root_quantity, double x_1, double x_2);
+void DebugSolveSquare(FILE* fp, double a, double b, double c, int root_quantity, double x_1, double x_2);
 
 //----------------------------------------------
 //! Switch for printing the roots
@@ -135,5 +135,5 @@ void debug_solution(FILE* fp, double a, double b, double c, int root_quantity, d
 //! @param [in] 2nd root
 //-----------------------------------------------
 
-void print_roots(int n, double x_1, double x_2);
+void PrintRoots(int n, double x_1, double x_2);
 #endif

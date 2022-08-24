@@ -1,6 +1,6 @@
 #include "file.h"
 
-void announce(double* a, double* b, double* c)
+void AnnounceCoeff(double* a, double* b, double* c)
 {
     assert(a != NULL);
     assert(b != NULL);
@@ -8,14 +8,14 @@ void announce(double* a, double* b, double* c)
 
     printf("Enter number coefficents a, b and c (or 0 for every coefficent for exit).\n");
     printf("Enter number coefficent a:\n");
-    *a = get_double();
+    *a = GetDouble();
     printf("Enter number coefficent b:\n");
-    *b = get_double();
+    *b = GetDouble();
     printf("Enter number coefficent c:\n");
-    *c = get_double();
+    *c = GetDouble();
 }
 
-double  get_double(void)
+double  GetDouble(void)
 {
     double input = NAN;
     char ch = '\0';
@@ -31,7 +31,7 @@ double  get_double(void)
     return input;
 }
 
-int compare(double  x, double  y, const double  epsylon)
+int CompareNumbers(double  x, double  y, const double  epsylon)
 {
     if(fabs(x - y) < epsylon)
         return 1;
@@ -39,16 +39,16 @@ int compare(double  x, double  y, const double  epsylon)
         return 0;
 }
 
-int linear(double b, double c, double* x_1)
+int SolveLinear(double b, double c, double* x_1)
 {
     assert(x_1 != NULL);
 
     assert(isfinite(b));
     assert(isfinite(c));
 
-    if(compare(b, 0, epsylon) == FALSE)
+    if(CompareNumbers(b, 0, epsylon) == FALSE)
     {
-        if (compare(c, 0, epsylon) == FALSE)
+        if (CompareNumbers(c, 0, epsylon) == FALSE)
             *x_1 = -c / b;
         else 
             *x_1 = 0;
@@ -56,7 +56,7 @@ int linear(double b, double c, double* x_1)
     }
     else
     {
-        if(compare(c, 0, epsylon) == FALSE)
+        if(CompareNumbers(c, 0, epsylon) == FALSE)
             return 0;
         else
             return -1;
@@ -64,7 +64,7 @@ int linear(double b, double c, double* x_1)
 }
 
 
-int solve(double a, double b, double c, double* x_1, double* x_2)
+int SolveSquare(double a, double b, double c, double* x_1, double* x_2)
 {
     assert(x_1 != NULL);
     assert(x_2 != NULL);
@@ -76,15 +76,15 @@ int solve(double a, double b, double c, double* x_1, double* x_2)
     assert(isfinite(b));
     assert(isfinite(c));
 
-    if( compare(a, 0, epsylon) == FALSE)
+    if(CompareNumbers(a, 0, epsylon) == FALSE)
     {
-        if(compare(b, 0, epsylon) == FALSE && compare(c, 0, epsylon) == FALSE)
+        if(CompareNumbers(b, 0, epsylon) == FALSE && CompareNumbers(c, 0, epsylon) == FALSE)
         {
             discriminant = b * b - 4 * a * c;               
         
             if (discriminant < 0)
                 return 0;
-            if (compare(discriminant, 0, epsylon) == TRUE)
+            if (CompareNumbers(discriminant, 0, epsylon) == TRUE)
             {
                 *x_1 = -b / (2 * a);
                 *x_2 = *x_1;
@@ -97,7 +97,7 @@ int solve(double a, double b, double c, double* x_1, double* x_2)
                 return 2;
             }
         }
-        if(compare(b, 0, epsylon) == TRUE && compare(c, 0, epsylon) == FALSE)
+        if(CompareNumbers(b, 0, epsylon) == TRUE && CompareNumbers(c, 0, epsylon) == FALSE)
         {
             if(a * c > 0)
                 return 0;
@@ -108,9 +108,9 @@ int solve(double a, double b, double c, double* x_1, double* x_2)
                 return 2;
             }
         }
-        if(compare(c, 0, epsylon) == TRUE)
+        if(CompareNumbers(c, 0, epsylon) == TRUE)
         {
-            if(compare(b, 0, epsylon) == FALSE)
+            if(CompareNumbers(b, 0, epsylon) == FALSE)
             {
                 *x_1 = 0.0;
                 *x_2 = -b / a;
@@ -125,12 +125,12 @@ int solve(double a, double b, double c, double* x_1, double* x_2)
         }
     }
     else
-        return linear(b, c, x_1);
+        return SolveLinear(b, c, x_1);
 
     return 0;
 }
 
-void debug_solution(FILE* fp, double a, double b, double c, int root_quantity, double x_1, double x_2)
+void DebugSolveSquare(FILE* fp, double a, double b, double c, int root_quantity, double x_1, double x_2)
 {
     int test_number = 0;
     double test_x_1 = NAN;
@@ -142,14 +142,14 @@ void debug_solution(FILE* fp, double a, double b, double c, int root_quantity, d
 
     for (i = 1; i < (test_number + 1); i ++)
     {
-        debug_scan(fp, &a, &b, &c, &test_root_quantity, &test_x_1, &test_x_2);
+        DebugScan(fp, &a, &b, &c, &test_root_quantity, &test_x_1, &test_x_2);
 
-        root_quantity = solve(a, b, c, &x_1, &x_2);
-        print_roots(root_quantity, x_1, x_2);
+        root_quantity = SolveSquare(a, b, c, &x_1, &x_2);
+        PrintRoots(root_quantity, x_1, x_2);
 
-        if(compare(root_quantity, test_root_quantity, epsylon) == TRUE && 
-           compare(test_x_1, x_1, epsylon) == TRUE && 
-           compare(test_x_2, x_2, epsylon) == TRUE )
+        if(CompareNumbers(root_quantity, test_root_quantity, epsylon) == TRUE && 
+           CompareNumbers(test_x_1, x_1, epsylon) == TRUE && 
+           CompareNumbers(test_x_2, x_2, epsylon) == TRUE )
             printf("Test  %d completed\n", i);
         else
             printf("Test  %d  was not completed\n", i); 
@@ -159,7 +159,7 @@ void debug_solution(FILE* fp, double a, double b, double c, int root_quantity, d
     }
 }
 
-void debug_scan(FILE* fp, double* a, double* b, double* c, int* test_root_quantity, double* test_x_1, double* test_x_2)
+void DebugScan(FILE* fp, double* a, double* b, double* c, int* test_root_quantity, double* test_x_1, double* test_x_2)
 {
     fscanf(fp, "%lf", a);
     fscanf(fp, "%lf", b);
@@ -170,7 +170,7 @@ void debug_scan(FILE* fp, double* a, double* b, double* c, int* test_root_quanti
     fscanf(fp, "%lf", test_x_2);
 }
 
-void print_roots(int root_quantity, double x_1, double x_2)
+void PrintRoots(int root_quantity, double x_1, double x_2)
 {
     switch(root_quantity)
     {
