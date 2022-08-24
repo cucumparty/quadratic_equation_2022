@@ -73,11 +73,11 @@ int SolveSquare(double a, double b, double c, double* x_1, double* x_2)
     assert(x_2 != NULL);
     assert(x_1 != x_2);
 
-    double discriminant = NAN;
-
     assert(isfinite(a));
     assert(isfinite(b));
     assert(isfinite(c));
+
+    double discriminant = NAN;
 
     if(CompareNumbers(a, 0, epsylon) == FALSE)
     {

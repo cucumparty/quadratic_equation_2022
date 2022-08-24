@@ -1,6 +1,5 @@
 #include "file.h"
 
-
 int main(int argc, char* argv[])
 {
     double a = NAN;
@@ -40,7 +39,7 @@ int main(int argc, char* argv[])
         
         if((fp = fopen("unit_tests.txt", "r")) == NULL)
         {
-            fprintf(stdout, "The file unit_tests.txt can't be opened.\n");
+            fprintf(stdout, "The file can't be opened.\n");
             return EXIT_FAILURE;
         }
 
