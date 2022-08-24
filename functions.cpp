@@ -135,12 +135,6 @@ int SolveSquare(double a, double b, double c, double* x_1, double* x_2)
 
 void DebugSolveSquare(FILE* fp, double a, double b, double c, int root_quantity, double x_1, double x_2)
 {
-    assert(isfinite(a));
-    assert(isfinite(b));
-    assert(isfinite(c));
-    assert(isfinite(root_quantity));
-    assert(isfinite(x_1));
-    assert(isfinite(x_2));
 
     assert(fp != NULL);
 
