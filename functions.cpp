@@ -33,6 +33,9 @@ double  GetDouble(void)
 
 int CompareNumbers(double  x, double  y, const double  epsylon)
 {
+    assert(isfinite(x));
+    assert(isfinite(y));
+
     if(fabs(x - y) < epsylon)
         return 1;
     else
@@ -132,6 +135,15 @@ int SolveSquare(double a, double b, double c, double* x_1, double* x_2)
 
 void DebugSolveSquare(FILE* fp, double a, double b, double c, int root_quantity, double x_1, double x_2)
 {
+    assert(isfinite(a));
+    assert(isfinite(b));
+    assert(isfinite(c));
+    assert(isfinite(root_quantity));
+    assert(isfinite(x_1));
+    assert(isfinite(x_2));
+
+    assert(fp != NULL);
+
     int test_number = 0;
     double test_x_1 = NAN;
     double test_x_2 = NAN;
@@ -161,6 +173,15 @@ void DebugSolveSquare(FILE* fp, double a, double b, double c, int root_quantity,
 
 void DebugScan(FILE* fp, double* a, double* b, double* c, int* test_root_quantity, double* test_x_1, double* test_x_2)
 {
+    assert(fp != NULL);
+    assert(a != NULL);
+    assert(b != NULL);
+    assert(c != NULL);
+    assert(test_root_quantity != NULL);
+    assert(test_x_1 != NULL);
+    assert(test_x_2 != NULL);
+    assert(test_x_1 != test_x_2);
+    
     fscanf(fp, "%lf", a);
     fscanf(fp, "%lf", b);
     fscanf(fp, "%lf", c);
@@ -172,6 +193,10 @@ void DebugScan(FILE* fp, double* a, double* b, double* c, int* test_root_quantit
 
 void PrintRoots(int root_quantity, double x_1, double x_2)
 {
+    assert(isfinite(root_quantity));
+    assert(isfinite(x_1));
+    assert(isfinite(x_2));
+
     switch(root_quantity)
     {
         case ZERO_ROOTS:
