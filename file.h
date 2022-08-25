@@ -1,6 +1,8 @@
 //!@mainpage
 //!Program for solving quadratic equations. 
 //!An equation of the form ax^2+bx+c=0. 3 coefficients @c a, @c b, and @c c are entered.
+//!If the user enters non-numeric symbol, the program asks him to repeat the entering.
+//!All 3 zero coefficients means the exit of the program.
 
 #ifndef FILE_H_
 //! Check if this file wasn't included more than 1 time
@@ -12,9 +14,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-//! \mainpage Use DEBUG_MOD to run unit tests to check the program
+//! Use DEBUG_MOD to run unit tests to check the program
 //!
-//! @note Comment DEBUG_MOD if you want to use the program as usual
+//! enter coefficients, root quantity and roots themselves in the file unit_tests.txt
+//!(if there is 0 roots, print 0 as 1st and 2nd root)
+//!
+//! Comment DEBUG_MOD if you want to use the program as usual
 #define DEBUG_MOD
 
 //! Constant for comparing
