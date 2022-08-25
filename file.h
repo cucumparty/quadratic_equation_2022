@@ -5,6 +5,7 @@
 //!All 3 zero coefficients means the exit of the program.
 
 #ifndef FILE_H_
+//!@brief
 //! Check if this file wasn't included more than 1 time
 #define FILE_H_
 
@@ -20,7 +21,7 @@
 //!(if there is 0 roots, print 0 as 1st and 2nd root)
 //!
 //! Comment DEBUG_MOD if you want to use the program as usual
-#define DEBUG_MOD
+//#define DEBUG_MOD
 
 //! Constant for comparing
 const double epsylon = 0.000001;
@@ -58,7 +59,7 @@ double GetDouble(void);
 //! @param [in] epsylon Constant for comparing
 //! 
 //! @return TRUE if two double numbers are equal(FALSE if not)
-int CompareNumbers(double  x, double  y, const double  epsylon);
+int CompareNumbers(double  x, double  y, const double  eps);
 
 //! Solve the square equation ax^2 + bx + c = 0
 //!
@@ -114,3 +115,4 @@ void DebugSolveSquare(FILE* fp, double a, double b, double c, int root_quantity,
 void PrintRoots(int root_quantity, double x_1, double x_2);
 
 #endif
+

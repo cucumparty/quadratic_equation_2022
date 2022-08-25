@@ -22,7 +22,7 @@ double  GetDouble(void)
 
     while(scanf("%lf", &input) != 1)
     {
-        while((ch = getchar()) != '\n')
+        while((ch = (char)getchar()) != '\n')
         {
             putchar(ch);
         }
@@ -31,12 +31,12 @@ double  GetDouble(void)
     return input;
 }
 
-int CompareNumbers(double  x, double  y, const double  epsylon)
+int CompareNumbers(double  x, double  y, const double  eps)
 {
     assert(isfinite(x));
     assert(isfinite(y));
 
-    if(fabs(x - y) < epsylon)
+    if(fabs(x - y) < eps)
         return ONE_ROOT;
     else
         return ZERO_ROOTS;
