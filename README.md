@@ -5,7 +5,7 @@ The user needs to enter 3 coefficients and the output will be roots of this equa
 All cases with coefficients are considered(zero coefficients and cases when the equation can't be solved).  
 If the user enters non-numeric symbol, the program asks him to repeat the entering.  
 All 3 zero coefficients means the exit of the program.  
-If you want test the program automatically you can uncomment `#define DEBUG_MOD` and enter coefficients, root quantity and roots themselves in the file `unit_tests.txt`this way:
+If you want test the program automatically you can uncomment `#define DEBUG_MOD` and enter coefficients, root quantity and roots themselves in the file `unit_tests.txt`this way(if there is 0 roots, print 0 as 1st and 2nd root):
 
 | number of tests |               |               |               |          |          |
 |-----------------|:-------------:|---------------|---------------|----------|----------|
