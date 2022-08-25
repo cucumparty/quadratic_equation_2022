@@ -37,9 +37,9 @@ int CompareNumbers(double  x, double  y, const double  epsylon)
     assert(isfinite(y));
 
     if(fabs(x - y) < epsylon)
-        return 1;
+        return ONE_ROOT;
     else
-        return 0;
+        return ZERO_ROOTS;
 }
 
 int SolveLinear(double b, double c, double* x_1)
@@ -55,14 +55,14 @@ int SolveLinear(double b, double c, double* x_1)
             *x_1 = -c / b;
         else 
             *x_1 = 0;
-        return 1;
+        return ONE_ROOT;
     }
     else
     {
         if(CompareNumbers(c, 0, epsylon) == FALSE)
-            return 0;
+            return ZERO_ROOTS;
         else
-            return -1;
+            return INF_ROOTS;
     }
 }
 
@@ -86,29 +86,29 @@ int SolveSquare(double a, double b, double c, double* x_1, double* x_2)
             discriminant = b * b - 4 * a * c;               
         
             if (discriminant < 0)
-                return 0;
+                return ZERO_ROOTS;
             if (CompareNumbers(discriminant, 0, epsylon) == TRUE)
             {
                 *x_1 = -b / (2 * a);
                 *x_2 = *x_1;
-                return 2;
+                return TWO_ROOTS;
             }
             if (discriminant > 0)
             {
                 *x_1 = (-b + sqrt(discriminant)) / (2 * a);
                 *x_2 = (-b - sqrt(discriminant)) / (2 * a);
-                return 2;
+                return TWO_ROOTS;
             }
         }
         if(CompareNumbers(b, 0, epsylon) == TRUE && CompareNumbers(c, 0, epsylon) == FALSE)
         {
             if(a * c > 0)
-                return 0;
+                return ZERO_ROOTS;
             else
             {
                 *x_1 = sqrt(-c / a);
                 *x_2 = -sqrt(-c / a);
-                return 2;
+                return TWO_ROOTS;
             }
         }
         if(CompareNumbers(c, 0, epsylon) == TRUE)
@@ -117,13 +117,13 @@ int SolveSquare(double a, double b, double c, double* x_1, double* x_2)
             {
                 *x_1 = 0.0;
                 *x_2 = -b / a;
-                return 2;
+                return TWO_ROOTS;
             }
             else
             {
                 *x_1 = 0.0;
                 *x_2 = 0.0;
-                return 2;
+                return TWO_ROOTS;
             }
         }
     }

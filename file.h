@@ -34,7 +34,7 @@ enum roots{
     INF_ROOTS = -1
 };
 
-/*! Announce coefficients in the square equation ax^2 + bx + c = 0
+//! Announce coefficients in the square equation ax^2 + bx + c = 0
 //!
 //! @param [in] a Pointer to the a-coefficient
 //! @param [in] b Pointer to the b-coefficient

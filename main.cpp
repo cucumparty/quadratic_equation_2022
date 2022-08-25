@@ -21,7 +21,9 @@ int main(int argc, char* argv[])
 
     AnnounceCoeff(&a, &b, &c);
 
-    while (CompareNumbers(a, 0, epsylon) != 1 || CompareNumbers(b, 0, epsylon) != 1 || CompareNumbers(c, 0, epsylon) != 1)
+    while (CompareNumbers(a, 0, epsylon) != 1 ||
+           CompareNumbers(b, 0, epsylon) != 1 || 
+           CompareNumbers(c, 0, epsylon) != 1)
     {
         root_quantity = SolveSquare(a, b, c, &x_1, &x_2);
         PrintRoots(root_quantity, x_1, x_2);
