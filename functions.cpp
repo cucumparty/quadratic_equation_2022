@@ -156,9 +156,9 @@ void DebugSolveSquare(FILE* fp, double a, double b, double c, int root_quantity,
         if(CompareNumbers(root_quantity, test_root_quantity, epsylon) == TRUE && 
            (CompareNumbers(test_x_1, x_1, epsylon) == TRUE || CompareNumbers(test_x_1, x_2, epsylon) == TRUE) && 
            (CompareNumbers(test_x_2, x_2, epsylon) == TRUE || CompareNumbers(test_x_2, x_1, epsylon) == TRUE))
-            printf("Test  %d completed\n", i);
+            printf("\033[1;32;40m Test  %d completed\033[0m\n", i);
         else
-            printf("Test  %d  was not completed\n", i); 
+            printf("\033[1;31;40m Test  %d  was not completed\033[0m\n", i); 
                          
         x_1 = 0;
         x_2 = 0;
@@ -187,20 +187,16 @@ void DebugScan(FILE* fp, double* a, double* b, double* c, int* test_root_quantit
 
 void PrintRoots(int root_quantity, double x_1, double x_2)
 {
-    assert(isfinite(root_quantity));
-    assert(isfinite(x_1));
-    assert(isfinite(x_2));
-
     switch(root_quantity)
     {
         case ZERO_ROOTS:
             printf("The equation can't be solved.\n");
             break;
         case ONE_ROOT:
-            printf("The solution is 1 root: %lf\n", x_1);
+            printf("The solution is 1 root: %lg\n", x_1);
             break;
         case TWO_ROOTS:
-            printf("The solutions of equation are 2 roots: %lf, %lf\n", x_1, x_2);
+            printf("The solutions of equation are 2 roots: %lg, %lg\n", x_1, x_2);
             break;
         case INF_ROOTS:
             printf("The infinite number of solutions.\n");
